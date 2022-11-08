@@ -23,47 +23,29 @@ function productsReducer(state = initialState, action) {
   switch (type) {
     case 'electronics':
       return {
-        state,
-        products: state.products.map(prod => {
-          if (prod.category === payload.category) {
-            return {
-              name: prod.name,
-              price: prod.price,
-              inStock: prod.inStock,
-            }
-          }
-        }),
-        activeCategory: state.activeCategory('electronics'),
+        ...state,
+        products: state.products.filter(product => 
+          product.category === 'electronics'
+        ),
+        activeCategory: 'electronics',
       }
 
     case 'clothing':
       return {
-        state,
-        products: state.products.map(prod => {
-          if (prod.category === payload.category) {
-            return {
-              name: prod.name,
-              price: prod.price,
-              inStock: prod.inStock,
-            }
-          }
-        }),
-        activeCategory: state.activeCategory('clothing'),
+        ...state,
+        products: state.products.filter(product => 
+          product.category === 'clothing'
+        ),
+        activeCategory: 'clothing',
       }
 
       case 'food':
         return {
-          state,
-          products: state.products.map(prod => {
-            if (prod.category === payload.category) {
-              return {
-                name: prod.name,
-                price: prod.price,
-                inStock: prod.inStock,
-              }
-            }
-          }),
-          activeCategory: state.activeCategory('food'),
+          ...state,
+          products: state.products.filter(product => 
+            product.category === 'food'
+          ),
+          activeCategory: 'food',
         }
 
     case 'RESET':
@@ -71,29 +53,27 @@ function productsReducer(state = initialState, action) {
 
     default:
       return state;
-
   }
-
 }
 
 export default productsReducer;
 
-export const chooseElec = (prod) => {
+export const chooseElec = (products) => {
   return {
     type: 'electronics',
-    payload: prod,
+    payload: products,
   }
 }
-export const chooseCloth = (prod) => {
+export const chooseCloth = (products) => {
   return {
     type: 'clothing',
-    payload: prod,
+    payload: products,
   }
 }
-export const chooseFood = (prod) => {
+export const chooseFood = (products) => {
   return {
     type: 'food',
-    payload: prod,
+    payload: products,
   }
 }
 

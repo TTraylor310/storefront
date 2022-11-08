@@ -32,30 +32,73 @@ function productsReducer(state = initialState, action) {
               inStock: prod.inStock,
             }
           }
-        })
+        }),
+        activeCategory: state.activeCategory('electronics'),
       }
 
-    case 'food':
+    case 'clothing':
       return {
         state,
         products: state.products.map(prod => {
           if (prod.category === payload.category) {
             return {
-              name: 
+              name: prod.name,
+              price: prod.price,
+              inStock: prod.inStock,
             }
           }
-        })
+        }),
+        activeCategory: state.activeCategory('clothing'),
       }
+
+      case 'food':
+        return {
+          state,
+          products: state.products.map(prod => {
+            if (prod.category === payload.category) {
+              return {
+                name: prod.name,
+                price: prod.price,
+                inStock: prod.inStock,
+              }
+            }
+          }),
+          activeCategory: state.activeCategory('food'),
+        }
+
+    case 'RESET':
+      return initialState;
+
+    default:
+      return state;
+
   }
 
 }
 
+export default productsReducer;
 
-function Products() {
-
-
-  return (
-    <div>Products</div>
-  )
+export const chooseElec = (prod) => {
+  return {
+    type: 'electronics',
+    payload: prod,
+  }
 }
-export default Products
+export const chooseCloth = (prod) => {
+  return {
+    type: 'clothing',
+    payload: prod,
+  }
+}
+export const chooseFood = (prod) => {
+  return {
+    type: 'food',
+    payload: prod,
+  }
+}
+
+export const reset = () => {
+  return {
+    type: 'RESET',
+  }
+}

@@ -1,21 +1,24 @@
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 import { connect } from 'react-redux';
 import { selectCategory } from '../../store/Store';
+
 
 
 const Categories = (props) => {
   return (
     <>
-    <h3>Categories</h3>
-      <ul>
+      <h3>Browse our Categories</h3>
+      <ButtonGroup variant="text" aria-label="outlined primary button group" size="large">
         {props.categories.map((category, index) => (
-          <li 
+          <Button
             key={`category-${index}`}
-            onClick={() => props.selectCategory(category.name)}
+            onClick={() => props.selectCategory(category.name)} 
           >
             {category.displayName}
-          </li>
+          </Button>
         ))}
-      </ul>
+      </ButtonGroup>
 
     </>
   )

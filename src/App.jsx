@@ -1,14 +1,14 @@
-import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
-import Products from './Components/Products/categories';
-
+import Categories from './Components/Categories';
+import Products from './Components/Products';
+import Footer from './Components/Footer/Footer';
 
 
 function App() {
   return (
     <>
       <Header />
-      Testing
+      <Categories />
       <Products />
       <Footer />
     </>

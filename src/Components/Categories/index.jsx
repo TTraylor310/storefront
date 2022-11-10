@@ -1,11 +1,18 @@
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
-import { connect } from 'react-redux';
+import { useEffect } from 'react';
+import { connect, useDispatch } from 'react-redux';
 import { selectCategory } from '../../store/Store';
 
 
-
 const Categories = (props) => {
+
+  // let dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(getCategories());
+  // }, []);
+
   return (
     <>
       <h3>Browse our Categories</h3>

@@ -1,9 +1,12 @@
 import { connect } from 'react-redux';
 // import { styled } from '@mui/material/styles';
+// import { combineReducers } from 'redux';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { selectCategory } from '../../store/Store';
+import { addToCart } from '../../store/Cart';
+import { Button } from '@mui/material';
 
 const Products = (props) => {
   return (
@@ -12,13 +15,15 @@ const Products = (props) => {
       <Box sx={{flexGrow: 1}}>
         <Grid container spacing={2}>
           {props.products.map( (prod, idx) => (
-            <Grid item xs={4}>
+            <Grid item xs={4} key={`products-${idx}`}>
               <Card >
-                <p
-                key={`products-${idx}`}>
-                {prod.name}</p>
-                <p>{prod.price}</p>
-                <p>{prod.inStock}</p>
+                <p>{prod.name}</p>
+                <p>Price: ${prod.price}</p>
+                <p>Inventory: {prod.inStock}</p>
+                <Button 
+                  onClick = {() => props.addToCart(prod)}>
+                    Add To Cart
+                </Button>
               </Card>
             </Grid>
           ))}
@@ -35,7 +40,8 @@ const mapStateToProps = (store) => {
 }
 
 const mapDispatchToProps = {
-  selectCategory
+  selectCategory,
+  addToCart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);

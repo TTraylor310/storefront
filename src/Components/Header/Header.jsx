@@ -1,8 +1,13 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
+import { useSelector } from 'react-redux';
+import SimpleCart from '../SimpleCart';
 
 function Header() {
+
+  // let productsInCart = useSelector(state => state.cart.productsInCart )
+
   return (
     <Box 
         sx={{
@@ -17,7 +22,10 @@ function Header() {
           </Grid>
           <Grid item xs={6}>
             <>
-              Cart
+              {/* <a href='#'>
+                Cart({productsInCart.length})
+              </a> */}
+              <SimpleCart />
             </>
           </Grid>
         </Grid>

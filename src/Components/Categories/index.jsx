@@ -3,15 +3,17 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { selectCategory } from '../../store/Store';
+import { getCategories } from '../../store/Categories';
 
 
 const Categories = (props) => {
 
-  // let dispatch = useDispatch();
+  let dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getCategories());
-  // }, []);
+  useEffect(() => {
+    console.log(getCategories());
+    dispatch(getCategories());
+  }, []);
 
   return (
     <>
@@ -22,7 +24,7 @@ const Categories = (props) => {
             key={`category-${index}`}
             onClick={() => props.selectCategory(category.name)} 
           >
-            {category.displayName}
+            {category.name}
           </Button>
         ))}
       </ButtonGroup>

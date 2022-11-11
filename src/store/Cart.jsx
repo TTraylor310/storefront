@@ -12,7 +12,6 @@ function cartReducer(state = initialState, action) {
     case 'REMOVE':
       return {
         productsInCart: state.productsInCart.filter(product => product.name !== action.payload.name)
-        // productsInCart: state.productsInCart.filter(product => console.log(action))
       }
 
     default:

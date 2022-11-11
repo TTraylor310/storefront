@@ -36,7 +36,7 @@ const SimpleCart = (props) => {
             // <>
               
               <ListItem 
-                key = {`key-for-list-product.name`}
+                key = {`key-for-list-${product._id}`}
                 secondaryAction={
                   <IconButton onClick={() => props.removeFromCart(product)}>
                     <DeleteIcon />
@@ -51,7 +51,7 @@ const SimpleCart = (props) => {
             // </>
             ))}
       </List>
-      {console.log(productsInCart)}
+      {console.log('Products in the Cart:', productsInCart)}
       {/* </Box> */}
     {/* </Popper> */}
     </>
